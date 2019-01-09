@@ -11,7 +11,7 @@ I was adamant on not using js, in hindsight I shouldve.
 
 Plus the fact that. I have not coded in raw PHP in a very long time. 
 
-And so I spent a total of 6 hours.
+And so I spent a total of 5 hours.
 
 So...  to the future imaginary developer. Here are the TODOs
 
