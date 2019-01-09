@@ -1,5 +1,6 @@
-<link href="asset/common.css" rel="stylesheet" type="text/css"/>
-
+<link href="/asset/common.css" rel="stylesheet" type="text/css"/>
+<a href="/">home</a>
+<hr/>
 <h1> My Cart </h1>
 <table class="product-list">
 	{% for product in cart %}
@@ -12,7 +13,7 @@
 	    			<button>remove</button>
 	    			<input type="hidden" name="action" value="remove">
 	    		</form>
-	    	</td>
+	    	</td>	
 	    	<td>
 	    		<a href="/product/{{product.name}}">visit</a>
 	    	</td>	
@@ -25,30 +26,19 @@
 </table>
 <p>Total to pay: <span class="total">{{total}}</span></p>
 
-<h1> Products </h1>
+<hr/>
 <table class="product-list">
-	{% for product in products %}
-	    <tr>
-	    	<td>{{ product.name }}</td>
-	    	<td>{{ product.price }}</td>	
-	    	<td>
-	    		<a href="/product/{{product.name}}">visit</a>
-	    	</td>	
-	    	<td>
-	    		<form method='POST' action='/cart'>
-	    			<button>add</button>
-	    			<input type="hidden" name="product" value="{{product.name}}">
-	    			<input type="hidden" name="price" value="{{product.price}}">
-	    		</form>
-	    	</td>	
-	    </tr>
-	{% else %}
-	    <tr>
-	    	<td>No products have been found.</td>
-	    </tr>
-	{% endfor %}
+	<tr>
+		<td>Product</td>
+		<td>{{ product.name }}</td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>{{ product.price }}</td>
+	</tr>
 </table>
 
+<hr/>
 <form method='POST' action='/logout'>
 	<button class="logout">Clear Session</button>
 </form>

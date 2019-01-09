@@ -1,5 +1,9 @@
 <?php
+// global config cause - in a rush
+$config =  new StdClass();
+require_once './config/bootstrap.php';
 
+//@TODO stub this products into a db 
 // ######## please do not alter the following code ########
 $products = array(
 	array("name" => "Sledgehammer", "price" => 125.75),
@@ -10,16 +14,28 @@ $products = array(
 );
 // ##################################################
 
-$config =  new StdClass();
-require_once './config/bootstrap.php';
+/**
+* In memory db stub.
+*/
+$stub_db_data = [];
+for ($i=0; $i < count($products); $i++) { 
+	$product = $products[$i];
+	$stub_db_data[$product['name']] = $product;
+}
 
+
+/*
+* Hydrate the cart from the current session
+*/
 $cart = new \Model\Cart;
 if( array_key_exists ('cart',$_SESSION)) {
 	$cart->hydrate($_SESSION['cart']);
 } else {
 	$cart->hydrate([]);
 }
+
 /**
+* Set up the routes.
 * @TODO move this configuration to the routes folder
 */
 $router = new \Klein\Klein();
@@ -35,6 +51,21 @@ $router->respond('GET', '/', function () {
     	'total' => $cart->getTotal()
     ]);
 });
+
+/*
+* Product page
+*/
+$router->respond('GET', '/product/[:name]', function ($req) {
+	global $config, $products, $cart, $stub_db_data;
+	$name = $req->name;
+	$product = $stub_db_data[$name];
+    return $config->view->renderer->render("product.html",[ 
+    	'product' => $product, 
+    	'cart' => $cart->items ,
+    	'total' => $cart->getTotal()
+    ]);
+});
+
 
 /**
 * Route for static files inside 

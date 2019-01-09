@@ -34,7 +34,7 @@ class Cart {
 	public function add($item) {
 		if( !isset($this->map[ $item['name'] ]) ) {
 			$item['qty'] = 1;
-			var_dump($item);
+			$item['display_price'] = round($item['price'], 2);
 			$this->map[ $item['name'] ] = $item;
 		} else {
 			$this->map[ $item['name'] ]['qty'] += 1; 
