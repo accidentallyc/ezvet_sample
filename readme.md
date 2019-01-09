@@ -1,10 +1,10 @@
 # Foreword
 
 Hey, so I when I read that I was suppose to take this like a serious project, I went all in.
-Designing the app from the ground up. Deciding which design patterns to use and making a flexible app
+Designing the app from the ground up; Deciding which design patterns to use and following good practices.
 But... this actually worked against me. I was burning time fast. 
 
-From doing it right, i started doing crutches
+So i started doing crutches
 and hacks. So reviewer I apologize in advance.
 
 I was adamant on not using js, in hindsight I shouldve.
