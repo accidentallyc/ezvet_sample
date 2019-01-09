@@ -1,0 +1,19 @@
+* {
+	font-family: Arial;
+}
+
+ 
+.product-list td {
+	border: thin solid black;
+	padding: 0.5em;
+}
+
+.logout {
+	width: 285px;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+.total {
+	color:red;
+}

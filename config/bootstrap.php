@@ -8,6 +8,7 @@ namespace config;
 
 require_once __DIR__ . "/../vendor/autoload.php" ;
 require_once __DIR__ . "/view.php";
+require_once __DIR__ . "/session.php";
 
 
 spl_autoload_register(function ($class_name) {

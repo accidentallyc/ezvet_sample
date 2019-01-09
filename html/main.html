@@ -1,1 +1,50 @@
-<h1>Success</h1>
+<link href="asset/common.css" rel="stylesheet" type="text/css"/>
+
+<h1> My Cart </h1>
+<table class="product-list">
+	{% for product in cart %}
+	    <tr>
+	    	<td>{{ product.name }}</td>
+	    	<td>{{ product.display_price }}</td>	
+	    	<td>{{ product.qty }}</td>	
+	    	<td> visit</td>	
+	    	<td>
+	    		<form method='POST' action='/cart/{{product.name}}'>
+	    			<button>remove</button>
+	    			<input type="hidden" name="action" value="remove">
+	    		</form>
+	    	</td>	
+	    </tr>
+	{% else %}
+	    <tr>
+	    	<td>Cart is empty.</td>
+	    </tr>
+	{% endfor %}
+</table>
+<p>Total to pay: <span class="total">{{total}}</span></p>
+
+<h1> Products </h1>
+<table class="product-list">
+	{% for product in products %}
+	    <tr>
+	    	<td>{{ product.name }}</td>
+	    	<td>{{ product.price }}</td>	
+	    	<td> visit</td>	
+	    	<td>
+	    		<form method='POST' action='/cart'>
+	    			<button>add</button>
+	    			<input type="hidden" name="product" value="{{product.name}}">
+	    			<input type="hidden" name="price" value="{{product.price}}">
+	    		</form>
+	    	</td>	
+	    </tr>
+	{% else %}
+	    <tr>
+	    	<td>No products have been found.</td>
+	    </tr>
+	{% endfor %}
+</table>
+
+<form method='POST' action='/logout'>
+	<button class="logout">Clear Session</button>
+</form>
